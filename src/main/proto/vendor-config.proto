@@ -1,0 +1,58 @@
+syntax = "proto3";
+
+package com.example;
+
+option java_multiple_files = true;
+option java_package = "com.example.proto";
+option java_outer_classname = "UtilityConfigurationProto";
+option objc_class_prefix = "HLW";
+
+service VendorConfigService {
+  rpc AddVendorConfig (VendorConfig) returns (VendorConfig);
+  rpc GetVendorConfig (GetVendorConfigRequest) returns (VendorConfig);
+  rpc RemoveVendorConfig (RemoveVendorConfigRequest) returns (RemoveVendorConfigResponse);
+}
+
+message VendorConfig {
+  string appId = 1;
+  string serviceType = 2;
+  string vendor = 3;
+  bool active = 4;
+  string cashbackAccount = 5;
+  int64 cashbackAmount = 6;
+  string cashbackImage = 7;
+  double cashbackPercent = 8;
+  int64 commissionAmount = 9;
+  string commissionIncomeAccount = 10;
+  double commissionPercent = 11;
+  string commissionReceivableAccount = 12;
+  string description = 13;
+  string displayImage = 14;
+  string feeCollectionAccount = 15;
+  string feeImage = 16;
+  string idempotentId = 23;
+  string serviceGroup = 22;
+  int64 fee = 17;
+  int64 feeAmount = 18;
+  int64 maxCashback = 19;
+  int64 maxTransactionAmount = 20;
+  string prefundingAccount = 21;
+  string serviceId = 24;
+}
+
+message GetVendorConfigRequest {
+  string appId = 1;
+  string serviceType = 2;
+  string vendor = 3;
+}
+
+message RemoveVendorConfigRequest {
+  string appId = 1;
+  string serviceType = 2;
+  string vendor = 3;
+}
+
+message RemoveVendorConfigResponse {
+  bool success = 1;
+  string message = 2;
+}

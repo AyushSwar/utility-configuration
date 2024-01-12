@@ -1,0 +1,27 @@
+micronaut:
+  application:
+    name: utility-configuration
+cassandra:
+  default:
+    basic:
+      load-balancing-policy:
+        local-datacenter: datacenter1
+      session-name: defaultSession
+      contact-points:
+        - localhost:9042
+    advanced:
+      control-connection:
+        schema-agreement:
+          timeout: 20
+      ssl-engine-factory: DefaultSslEngineFactory
+test-resources:
+  containers:
+    cassandra:
+      startup-timeout: 600s
+      image-name: cassandra
+      exposed-ports:
+        - cassandra.port: 9042
+
+  logging:
+    level:
+      com.example.api.interceptor.ValidationInterceptor: INFO
